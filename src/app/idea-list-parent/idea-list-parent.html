@@ -1,0 +1,14 @@
+<div class="parent-container">
+  <app-statustabs [ideas]="ideas"></app-statustabs>
+  <idea-list
+    [pagedIdeas]="pagedIdeas">
+  </idea-list>
+  <div class="pagination" *ngIf="totalPages > 1">
+    <button
+      *ngFor="let page of [].constructor(totalPages); let i = index"
+      (click)="onPageChange(i+1)"
+      [class.active]="currentPage === i+1">
+      {{ i+1 }}
+    </button>
+  </div>
+</div>

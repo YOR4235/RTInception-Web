@@ -1,0 +1,14 @@
+<nav class="side-nav">
+  <!-- Logo -->
+  <div class="logo">
+    <img src="assets/alcon-logo.png" alt="Alcon Logo">
+  </div>
+
+  <!-- Menu Items -->
+  <ul>
+    <li *ngFor="let item of menuItems" (click)="onMenuClick(item.label)">
+      <span class="icon">{{ item.icon }}</span>
+      <span class="label">{{ item.label }}</span>
+    </li>
+  </ul>
+</nav>

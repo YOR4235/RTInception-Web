@@ -1,0 +1,76 @@
+<div class="container">
+  <!-- Popup filter-search -->
+  <app-filter-search *ngIf="activeFilterColumn"
+                 [columnName]="activeFilterColumn"
+                 [values]="uniqueValues1(activeFilterColumn)"
+                 (filterChanged)="applyFilter1(activeFilterColumn, $event)"
+                 (closePopup)="closeFilter()">
+  </app-filter-search>
+  <table class="idea-table">
+    <thead>
+      <tr>
+        <th>
+          RTI ID
+          <button (click)="sortBy('rti_unique_id')">⇅</button>
+          <input type="text" placeholder="Search..." (input)="applyFilter('rti_unique_id', $event.target.value)" />
+        </th>
+        <th>
+          Idea ID
+          <button (click)="sortBy('idea_id')">⇅</button>
+          <input type="text" placeholder="Search..." (input)="applyFilter('idea_id', $event.target.value)" />
+        </th>
+        <th>
+          Franchise
+          <button (click)="sortBy('franchise')">⇅</button>
+          <input type="text" placeholder="Search..." (input)="applyFilter('franchise', $event.target.value)" />
+        </th>
+        <th>
+          Product Type
+          <button (click)="sortBy('product_type')">⇅</button>
+          <input type="text" placeholder="Search..." (input)="applyFilter('product_type', $event.target.value)" />
+        </th>
+        <th>
+          Project
+          <button (click)="sortBy('product_project')">⇅</button>
+          <input type="text" placeholder="Search..." (input)="applyFilter('product_project', $event.target.value)" />
+        </th>
+        <th>
+          Therapeutic Area
+          <button (click)="sortBy('therapeutic_area')">⇅</button>
+          <input type="text" placeholder="Search..." (input)="applyFilter('therapeutic_area', $event.target.value)" />
+        </th>
+        <th>
+          Strategic Rationale
+          <button (click)="sortBy('strategic_rationale')">⇅</button>
+          <input type="text" placeholder="Search..." (input)="applyFilter('strategic_rationale', $event.target.value)" />
+        </th>
+        <th>
+          Aspirational Claim
+          <button (click)="sortBy('target_aspirational_claim')">⇅</button>
+          <input type="text" placeholder="Search..." (input)="applyFilter('target_aspirational_claim', $event.target.value)" />
+        </th>
+        <th>
+          Status
+          <button (click)="sortBy('status')">⇅</button>
+          <button (click)="openFilter('status')">Filter</button>
+        </th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let idea of filteredIdeas">
+        <td>{{ idea.rti_unique_id }}</td>
+        <td>{{ idea.idea_id }}</td>
+        <td>{{ idea.franchise }}</td>
+        <td>{{ idea.product_type }}</td>
+        <td>{{ idea.product_project }}</td>
+        <td>{{ idea.therapeutic_area }}</td>
+        <td>{{ idea.strategic_rationale }}</td>
+        <td>{{ idea.target_aspirational_claim }}</td>
+        <td>{{ idea.status }}</td>
+        <td><button class="options-btn">⋮</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

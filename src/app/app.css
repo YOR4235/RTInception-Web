@@ -1,0 +1,15 @@
+.app-layout {
+  display: flex;          /* enables side-by-side layout */
+  height: 100vh;          /* full viewport height */
+}
+
+app-sidenav {
+  flex: 0 0 220px;        /* fixed width for sidebar */
+}
+
+.content {
+  flex: 1;                /* take remaining space */
+  padding: 20px;
+  overflow-y: auto;       /* scroll if content is long */
+  background-color: #f9f9f9;
+}

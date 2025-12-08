@@ -1,0 +1,32 @@
+<div class="header-container">
+  <div class="header-actions">
+    <h2>Idea List</h2>
+    <div class="buttons">
+      <button (click)="onExport()">Export Data</button>
+      <button (click)="onCreate()">Create New Idea</button>
+    </div>
+  </div>
+
+  <p class="description">
+    Browse and manage your ideas. Use the tabs below to filter by status.
+  </p>
+
+  <!-- Horizontal tabs -->
+  <div class="tabs">
+    <button (click)="onFilter('All')" [class.active]="getCount('All') > 0">
+      All ({{ getCount('All') }})
+    </button>
+    <button (click)="onFilter('Drafts')">
+      Drafts ({{ getCount('Drafts') }})
+    </button>
+    <button (click)="onFilter('Open')">
+      Open ({{ getCount('Open') }})
+    </button>
+    <button (click)="onFilter('Closed')">
+      Closed ({{ getCount('Closed') }})
+    </button>
+    <button (click)="onFilter('On Hold')">
+      On Hold ({{ getCount('On Hold') }})
+    </button>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+.idea-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.idea-table th, .idea-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.idea-table th {
+  background-color: #ccf5ff;
+  text-align: left;
+}
+
+.options-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.pagination {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid #007bff;
+  background-color: white;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #007bff;
+  color: white;
+}
