@@ -1,0 +1,52 @@
+/* Brand section (logo + chevron) */
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* logo left, chevron right */
+  padding: 20px 16px 8px;
+}
+
+.brand img {
+  height: 60px;       /* bigger logo */
+  width: auto;        /* keep aspect ratio */
+}
+
+.brand .chevron {
+  font-size: 25px;
+  color: var(--text-secondary);
+}
+
+/* Navigation container */
+.nav {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border);
+   /* stack items vertically */
+}
+
+/* Navigation items */
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  margin: 6px 8px;
+  border-radius: 12px;
+  color: var(--brand-text);
+  text-decoration: none;
+  transition: background 140ms ease, color 140ms ease;
+}
+
+.nav-item.active {
+  background: var(--brand-primary);
+  color: #fff;
+}
+
+.nav-item:not(.active):hover {
+  background: #f2f6ff;
+}
+
+.nav-item mat-icon {
+  font-size: 22px; /* slightly larger for better balance */
+}

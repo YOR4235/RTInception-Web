@@ -1,9 +1,23 @@
-<div class="app-layout">
-  <!-- Side Navigation -->
-  <app-sidenav></app-sidenav>
+<mat-sidenav-container class="app-shell">
+  <mat-sidenav mode="side" opened class="app-sidenav">
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
 
-  <!-- Main Content Area -->
-  <div class="content">
-    <router-outlet></router-outlet>
-  </div>
-</div>
+  <mat-sidenav-content class="app-content">
+    <app-header-bar class="px-8 py-4"></app-header-bar>
+    <app-header-filter-bar></app-header-filter-bar>
+    <app-statustabs></app-statustabs>
+    <div class="container">
+
+      <div class="card table-card mt-16">
+        <app-idea-tabs></app-idea-tabs>
+      </div>
+
+      <app-pagination class="mt-24 mb-24"></app-pagination>
+    </div>
+
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

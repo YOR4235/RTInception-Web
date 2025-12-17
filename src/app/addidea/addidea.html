@@ -1,7 +1,92 @@
-<div>
-  <input #projectInput type="text" placeholder="Enter project">
-  <input #proposalInput type="text" placeholder="Enter proposal">
-  <button type="submit" >
-    Add Idea
-  </button>
+<!-- idea-form.html -->
+<div class="page">
+  <!-- <aside class="sidebar">
+    <div class="logo">Alcon</div>
+    <nav class="nav">
+      <button class="nav-item active">Home</button>
+      <button class="nav-item">Contact for help</button>
+    </nav>
+  </aside> -->
+
+  <main class="content">
+    <header class="content-header">
+      <button class="back" (click)="gotoHome()">&larr;</button>
+      <h1>Create New Idea</h1>
+      <div class="breadcrumb">Home &gt; Create New Idea</div>
+    </header>
+
+    <form [formGroup]="ideaForm" (ngSubmit)="onSubmit()" class="form">
+      <div class="grid">
+        <!-- Column 1 -->
+        <div class="col">
+          <label for="product">Product or Project <span class="req">*</span></label>
+          <select formControlName="product" id="product">
+            @for (p of products; track p) {
+              <option [value]="p">{{ p }}</option>
+            }
+          </select>
+
+          <label for="researchPathway">Research Pathway (EF) <span class="req">*</span></label>
+          <select formControlName="researchPathway" id="researchPathway">
+            @for (r of researchPathways; track r) {
+              <option [value]="r">{{ r }}</option>
+            }
+          </select>
+
+          <label for="franchise">Franchise (Auto) <span class="req">*</span></label>
+          <input type="text" formControlName="franchise" id="franchise" readonly />
+
+          <label for="rationale">Strategic Imperative / Rationale <span class="req">*</span></label>
+          <textarea formControlName="rationale" id="rationale" rows="5" placeholder="Enter strategic rationale"></textarea>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="col">
+          <label for="therapeutic">Therapeutic Area (Auto) <span class="req">*</span></label>
+          <input type="text" formControlName="therapeutic" id="therapeutic" readonly />
+
+          <label for="productFamily">Product Family (BRAND) (Auto) <span class="req">*</span></label>
+          <input type="text" formControlName="productFamily" id="productFamily" readonly />
+
+          <label for="monadicComparative">Monadic or Comparative <span class="req">*</span></label>
+          <select formControlName="monadicComparative" id="monadicComparative">
+            @for (m of monadicOptions; track m) {
+              <option [value]="m">{{ m }}</option>
+            }
+          </select>
+
+          <label for="targetClaim">Target Aspirational Claim <span class="req">*</span></label>
+          <textarea formControlName="targetClaim" id="targetClaim" rows="5" placeholder="Enter target aspirational claim"></textarea>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="col">
+          <label for="productType">Product Type <span class="req">*</span></label>
+          <select formControlName="productType" id="productType">
+            @for (t of productTypes; track t) {
+              <option [value]="t">{{ t }}</option>
+            }
+          </select>
+
+          <label for="rtiYear">RTI Year (When Study Starts) <span class="req">*</span></label>
+          <!-- simple year-picker -->
+          <input type="number" formControlName="rtiYear" id="rtiYear" min="2000" max="2100" />
+
+          <label for="origin">Origin of the request (Auto) <span class="req">*</span></label>
+          <input type="text" formControlName="origin" id="origin" readonly />
+
+          <label for="launchClaim">Launch Claim? <span class="req">*</span></label>
+          <select formControlName="launchClaim" id="launchClaim">
+            <option [value]="true">Yes</option>
+            <option [value]="false">No</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn-outline" (click)="onSaveDraft()">Save as a Draft</button>
+        <button type="submit" class="btn-primary">Create Idea</button>
+      </div>
+    </form>
+  </main>
 </div>

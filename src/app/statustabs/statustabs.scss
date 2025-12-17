@@ -1,0 +1,13 @@
+
+.ideas-toolbar {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.title { font-weight: 700; font-size: 18px; }
+.caption { color: var(--text-secondary); font-size: 13px; margin-top: 2px; }
+.right { display: flex; gap: 10px; }
+.right .mat-form-field { width: 150px; }
+
+.tabs { padding-top: 8px; }
+.mat-tab-group { --mdc-secondary-navigation-tab-container-background-color: transparent; }
+.mat-tab-labels { gap: 8px; }
+.mat-tab-label .badge-pill { margin-left: 8px; }

@@ -1,32 +1,52 @@
-<div class="header-container">
-  <div class="header-actions">
-    <h2>Idea List</h2>
-    <div class="buttons">
-      <button (click)="onExport()">Export Data</button>
-      <button (click)="onCreate()">Create New Idea</button>
-    </div>
+
+<div class="ideas-toolbar px-24 py-16">
+  <div class="left">
+    <div class="title">Ideas List</div>
+    <div class="caption">Your latest research proposals and ideas</div>
   </div>
-
-  <p class="description">
-    Browse and manage your ideas. Use the tabs below to filter by status.
-  </p>
-
-  <!-- Horizontal tabs -->
-  <div class="tabs">
-    <button (click)="onFilter('All')" [class.active]="getCount('All') > 0">
-      All ({{ getCount('All') }})
+  <div class="right">
+    <button mat-stroked-button color="primary">
+      <mat-icon>ios_share</mat-icon>
+      Export Data
     </button>
-    <button (click)="onFilter('Drafts')">
-      Drafts ({{ getCount('Drafts') }})
-    </button>
-    <button (click)="onFilter('Open')">
-      Open ({{ getCount('Open') }})
-    </button>
-    <button (click)="onFilter('Closed')">
-      Closed ({{ getCount('Closed') }})
-    </button>
-    <button (click)="onFilter('On Hold')">
-      On Hold ({{ getCount('On Hold') }})
+    <button mat-flat-button color="primary">
+      <mat-icon>add</mat-icon>
+      New Idea
     </button>
   </div>
 </div>
+
+<div class="tabs px-24">
+  <mat-tab-group mat-stretch-tabs>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        All
+      </ng-template>
+      <!-- content lives in table below -->
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span>Revision Required</span>
+        <span class="badge-pill info">10</span>
+      </ng-template>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span>Draft</span>
+        <span class="badge-pill">8</span>
+      </ng-template>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span>Submitted</span>
+        <span class="badge-pill success">3</span>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+<mat-divider></mat-divider>
+
+``

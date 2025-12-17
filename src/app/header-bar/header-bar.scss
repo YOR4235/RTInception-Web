@@ -1,0 +1,32 @@
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header .left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* space between title and sub */
+}
+
+.header .right {
+  display: flex;
+  align-items: center;
+}
+
+.title { margin: 0; font-size: 22px; font-weight: 700; }
+.sub { color: var(--text-secondary); font-size: 13px; }
+
+.platform-tag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+}
+.platform-tag mat-icon { color: var(--brand-primary); }
+.platform-tag .name { font-weight: 600; }
+.platform-tag .desc { font-size: 12px; color: var(--text-secondary); }

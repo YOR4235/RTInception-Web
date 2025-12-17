@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Idea } from '../models/idea';
 import { CommonModule } from '@angular/common';
 import { FilterSearch } from '../filter-search/filter-search';
@@ -8,9 +8,9 @@ import { FilterSearch } from '../filter-search/filter-search';
   standalone: true,
   imports: [CommonModule, FilterSearch],
   templateUrl: './idea-list.html',
-  styleUrls: ['./idea-list.css'],
+  styleUrls: ['./idea-list.scss'],
 })
-export class IdeaList implements OnInit {
+export class IdeaList implements OnInit, OnChanges {
   @Input() pagedIdeas: Idea[] = [];
   filteredIdeas: Idea[] = [];
 
@@ -23,6 +23,13 @@ export class IdeaList implements OnInit {
     this.filteredIdeas = [...this.pagedIdeas];
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['pagedIdeas']) {
+      // whenever parent updates pagedIdeas, refresh filteredIdeas
+      this.updateFilteredIdeas();
+    }
+  }
+
   sortBy(column: keyof Idea) {
     this.sortDirection[column] = this.sortDirection[column] === 'asc' ? 'desc' : 'asc';
     const dir = this.sortDirection[column] === 'asc' ? 1 : -1;
@@ -33,7 +40,6 @@ export class IdeaList implements OnInit {
     });
   }
 
-  // Simple text filter
   applyFilter(column: keyof Idea, value: string) {
     if (!value) {
       delete this.filters[column];
@@ -53,13 +59,11 @@ export class IdeaList implements OnInit {
     });
   }
 
-  // Distinct value filter from popup
   applyFilter1(column: keyof Idea, selectedValues: string[]) {
     this.filteredIdeas = this.pagedIdeas.filter(idea =>
       selectedValues.includes((idea as any)[column])
     );
     console.log('Filtered Ideas:', this.filteredIdeas);
-    //this.closeFilter();
   }
 
   uniqueValues1(column: keyof Idea): string[] {

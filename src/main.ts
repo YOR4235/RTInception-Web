@@ -6,6 +6,7 @@ import { ideaReducer } from './app/ideas/idea.reducer';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideEffects } from '@ngrx/effects';
 import { IdeaEffects } from './app/ideas/idea.effects';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 bootstrapApplication(App, {
   ...appConfig,
@@ -14,6 +15,7 @@ bootstrapApplication(App, {
     provideStore({ ideas: ideaReducer }),
     provideEffects([IdeaEffects]),
     provideStoreDevtools({ maxAge: 25 }),
+    provideAnimations()
   ],
 })
   .then(() => console.log('✅ Angular app bootstrapped'))

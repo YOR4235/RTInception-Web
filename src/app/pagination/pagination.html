@@ -1,0 +1,10 @@
+<div class="pagination" *ngIf="totalPages > 1">
+  <button (click)="prev()">prev</button>
+  <button
+    *ngFor="let page of [].constructor(totalPages); let i = index"
+    (click)="selectPage(i+1)"
+    [class.active]="currentPage === i+1">
+    {{ i+1 }}
+  </button>
+  <button (click)="next()">next</button>
+</div>

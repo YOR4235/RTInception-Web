@@ -1,0 +1,13 @@
+
+table { width: 100%; }
+th.mat-header-cell, td.mat-cell {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--border);
+}
+th.mat-header-cell {
+  background: #fbfcff;
+  font-size: 12px;
+  letter-spacing: .2px;
+}
+td.mat-cell { font-size: 13px; }
+.claim { color: var(--text-secondary); }

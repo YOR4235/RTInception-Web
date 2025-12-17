@@ -5,7 +5,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   selector: 'app-filter-search',
   imports: [CommonModule],
   templateUrl: './filter-search.html',
-  styleUrl: './filter-search.css',
+  styleUrl: './filter-search.scss',
 })
 export class FilterSearch {
 

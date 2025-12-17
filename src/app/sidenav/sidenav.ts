@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-sidenav',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatIconModule],
   templateUrl: './sidenav.html',
-  styleUrl: './sidenav.css',
+  styleUrl: './sidenav.scss',
 })
 export class Sidenav {
   menuItems = [

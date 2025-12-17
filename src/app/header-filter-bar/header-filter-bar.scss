@@ -1,0 +1,25 @@
+/* ===== Ensure the row is a single horizontal flex line ===== */
+.filters .row {
+  display: flex;
+  flex-wrap: nowrap;        /* never wrap to next line */
+  align-items: center;      /* vertical center */
+  gap: 8px;                 /* spacing between items */
+  width: 75%;
+  height: 25px;
+}
+
+/* Make labels compact and prevent wrapping */
+.filters .label {
+  white-space: nowrap;
+  font-size: 12px;
+  line-height: 1;
+  margin-right: 4px;
+  color: #555;
+  flex: 0 0 auto;           /* do not grow or shrink */
+}
+
+.filters .dense {
+  height: 20px;
+  width: 150px;
+  display: flex;
+}

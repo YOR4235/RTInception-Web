@@ -7,12 +7,15 @@ import { LoadIdeas } from '../ideas/idea.actions';
 import { IdeaList } from '../idea-list/idea-list';
 import { CommonModule } from '@angular/common';
 import { Statustabs } from '../statustabs/statustabs';
+import { Pagination } from '../pagination/pagination';
+import { Subscription } from 'rxjs';
+import { IdeaEventsService } from '../events/ideaServiceEvents';
 
 @Component({
   selector: 'app-idea-list-parent',
-  imports: [CommonModule, Statustabs, IdeaList],
+  imports: [CommonModule, Statustabs, IdeaList, Pagination],
   templateUrl: './idea-list-parent.html',
-  styleUrls: ['./idea-list-parent.css']
+  styleUrls: ['./idea-list-parent.scss']
 })
 export class IdeaListParent implements OnInit {
   ideas$: Observable<Idea[]>;
@@ -21,13 +24,23 @@ export class IdeaListParent implements OnInit {
   currentPage = 1;
   pageSize = 7;
   totalPages = 0;
+  private sub!: Subscription;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>, private ideaEvents: IdeaEventsService) {
     this.ideas$ = this.store.pipe(select((state) => state.ideas));
     console.log('IdeaListParent component initialized');
   }
 
   ngOnInit(): void {
+    this.sub = this.ideaEvents.events$.subscribe(event => {
+      if (event.type === 'filter') {
+        console.log('Filter received:', event.payload);
+        // fetch filtered data
+      } else if (event.type === 'page') {
+        console.log('Page change received:', event.payload);
+        // fetch new page
+      }
+    });
     // load ideas from store
     this.store.dispatch(LoadIdeas());
 
@@ -37,6 +50,10 @@ export class IdeaListParent implements OnInit {
       this.totalPages = Math.ceil(this.ideas.length / this.pageSize);
       this.updatePagedIdeas();
     });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   updatePagedIdeas(): void {
