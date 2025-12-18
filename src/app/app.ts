@@ -8,10 +8,11 @@ import { HeaderFilterBar } from './header-filter-bar/header-filter-bar';
 import { IdeaTabs } from "./idea-tabs/idea-tabs";
 import { Pagination } from './pagination/pagination';
 import { Statustabs } from './statustabs/statustabs';
+import { IdeaDashboard } from './ideas/idea-dashboard/idea-dashboard';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Sidenav, HeaderFilterBar, MatSidenavModule, MatButtonModule, HeaderBar, IdeaTabs, Pagination, Statustabs],
+  imports: [RouterOutlet, Sidenav, HeaderFilterBar, MatSidenavModule, MatButtonModule, HeaderBar, IdeaTabs, Pagination, Statustabs, IdeaDashboard],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

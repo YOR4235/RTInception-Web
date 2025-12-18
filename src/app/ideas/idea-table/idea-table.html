@@ -1,0 +1,19 @@
+<table mat-table [dataSource]="dataSource" class="custom-table">
+  <ng-container *ngFor="let col of columns" [matColumnDef]="col.key">
+    <th mat-header-cell *matHeaderCellDef class="header-cell"
+        (click)="col.sortable && onSort(col.key)">
+      <span class="header-text">{{ col.label }}</span>&nbsp;
+
+      <!-- Neutral -->
+      <mat-icon *ngIf="col.sortable && getDirection(col.key) === null" class="sort-icon">swap_vert</mat-icon>
+      <!-- Ascending -->
+      <mat-icon *ngIf="col.sortable && getDirection(col.key) === 'asc'" class="sort-icon">arrow_upward</mat-icon>
+      <!-- Descending -->
+      <mat-icon *ngIf="col.sortable && getDirection(col.key) === 'desc'" class="sort-icon">arrow_downward</mat-icon>
+    </th>
+    <td mat-cell *matCellDef="let element">{{ element[col.key] }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
