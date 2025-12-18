@@ -1,0 +1,48 @@
+.pagination {
+  display: flex;
+  justify-content: center;     // Center horizontally
+  align-items: center;
+  gap: 12px;                   // Space between buttons
+  margin: 20px 0;
+}
+
+/* Base style: text-only, dark blue */
+.pagination button {
+  background: none;            // No box by default
+  border: none;
+  color: #003366;              // Dark blue text
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 8px;            // Minimal padding for click target
+  transition: color 0.2s ease, background-color 0.2s ease;
+
+  &:hover {
+    color: #0056b3;            // Slightly lighter on hover
+    text-decoration: underline;
+  }
+}
+
+/* Active page: show dark blue square box */
+.pagination button.active {
+  background-color: #003366;   // Dark blue box
+  color: #ffffff;              // White text for contrast
+  text-decoration: none;
+
+  /* Make it a square */
+  width: 32px;               
+  height: 32px;                
+  padding: 0;                  
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0px;          // Slight rounding (set to 0 for perfect square)
+  font-weight: 700;            // Emphasize active
+}
+
+/*improve Prev/Next alignment with arrows */
+.pagination button:first-child,
+.pagination button:last-child {
+  padding: 4px 10px;           
+}
+
