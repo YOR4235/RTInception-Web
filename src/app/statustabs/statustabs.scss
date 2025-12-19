@@ -42,12 +42,12 @@
 
   /* Export Data button (outlined, blue text/icon) */
   button[mat-stroked-button][color="primary"] {
-    border: 1px solid #0056b3;
-    color: #0056b3;
+    border: 1px solid #15408c;
+    color: #15408c;
     background: transparent;
     border-radius: 4px;
 
-    .mat-icon { color: #0056b3; }
+    .mat-icon { color: #15408c; }
 
     &:hover { background-color: rgba(0, 86, 179, 0.08); }
   }
@@ -59,14 +59,14 @@
 
   /* New Idea button (filled, white text/icon) */
   button[mat-flat-button][color="primary"] {
-    background-color: #0056b3;
+    background-color: #15408c;
     color: #fff;
     border-radius: 4px;
     border:none;
 
     .mat-icon { color: #fff; }
 
-    &:hover { background-color: #003f88; }
+    &:hover { background-color: #15408c; }
   }
 }
 
