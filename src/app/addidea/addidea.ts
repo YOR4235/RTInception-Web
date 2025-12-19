@@ -6,11 +6,11 @@ import { Idea } from '../models/idea';
 import { AppState } from '../app.state';
 import { Store } from '@ngrx/store';
 import { AddIdea } from '../ideas/idea.actions';
-import {Router} from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 
 @Component({
   selector: 'app-addidea',
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule],
   templateUrl: './addidea.html',
   styleUrl: './addidea.scss',
 })
