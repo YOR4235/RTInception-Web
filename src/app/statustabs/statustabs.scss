@@ -1,13 +1,99 @@
 
 .ideas-toolbar {
-  border-top: 2px solid var(--border);
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 14px;
 }
 .title { font-weight: 700; font-size: 18px; }
 .caption { color: var(--text-secondary); font-size: 13px; margin-top: 2px; }
-.right { display: flex; gap: 10px; }
+
+.right {
+  display: flex;
+  gap: 10px;
+
+  /* Common centering + padding for both buttons */
+  button[mat-stroked-button],
+  button[mat-flat-button] {
+    display: inline-flex;               /* enable flex layout inside button */
+    align-items: center;                /* vertical center */
+    justify-content: center;            /* horizontal center */
+    gap: 8px;                           /* space between icon and text */
+    padding: 8px 16px;                  /* consistent box sizing */
+    text-align: center;                 /* center label text */
+
+    /* Ensure Angular Material MDC content is centered too */
+    .mdc-button__label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .mat-icon {
+      font-size: 18px;
+      line-height: 1;
+      margin: 0;                        /* remove default right margin */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  /* Export Data button (outlined, blue text/icon) */
+  button[mat-stroked-button][color="primary"] {
+    border: 1px solid #0056b3;
+    color: #0056b3;
+    background: transparent;
+    border-radius: 4px;
+
+    .mat-icon { color: #0056b3; }
+
+    &:hover { background-color: rgba(0, 86, 179, 0.08); }
+  }
+  
+.rotate-icon {
+  transform: rotate(90deg);
+   display: inline-block;    
+}
+
+  /* New Idea button (filled, white text/icon) */
+  button[mat-flat-button][color="primary"] {
+    background-color: #0056b3;
+    color: #fff;
+    border-radius: 4px;
+    border:none;
+
+    .mat-icon { color: #fff; }
+
+    &:hover { background-color: #003f88; }
+  }
+}
+
 .right .mat-form-field { width: 150px; }
 
-.mat-tab-group { --mdc-secondary-navigation-tab-container-background-color: transparent; }
-.mat-tab-labels { gap: 8px; }
-.mat-tab-label .badge-pill { margin-left: 8px; }
+.tabs {   
+  max-width: 600px;      
+  margin: 0 auto;
+  padding-top: 8px;
+}
+.mat-mdc-tab-group .mat-mdc-tab-labels {
+  justify-content: flex-start;   /* left align the tabs */
+  gap: 0px;
+  padding-left: 0px;
+}
+/* Light green variant (use on 3,8,10) */
+.badge-pill,
+.badge-pill.success,         
+.badge-pill.info {           
+  background-color: #dcfce7; 
+  color: #065f46;            
+  border: 1px solid #bbf7d0;
+  min-width: 22px; 
+  border-radius: 9999px; 
+  font-size: 12px;
+   font-weight: 600;
+   line-height: 1; /* subtle border for definition */
+}
+
+

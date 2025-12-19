@@ -8,11 +8,13 @@ import { IdeaEventsService } from '../../events/ideaServiceEvents';
 import { IdeaTable } from '../idea-table/idea-table';
 import { Pagination } from '../../pagination/pagination';
 import { TableColumn } from '../idea-table/idea-table';
+import { HeaderFilterBar } from '../../header-filter-bar/header-filter-bar';
+import { Statustabs } from '../../statustabs/statustabs';
 
 @Component({
   selector: 'app-idea-dashboard',
   standalone: true,
-  imports: [IdeaTable, Pagination],
+  imports: [IdeaTable, Pagination, HeaderFilterBar, Statustabs],
   templateUrl: './idea-dashboard.html',
   styleUrls: ['./idea-dashboard.scss'],
 })
@@ -31,7 +33,7 @@ export class IdeaDashboard implements OnInit, OnDestroy {
   pagedIdeas: Idea[] = [];
 
   currentPage = 1;
-  pageSize = 8;
+  pageSize = 5;
   totalPages = 1;
 
   private sub!: Subscription;

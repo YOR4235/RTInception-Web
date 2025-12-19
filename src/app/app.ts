@@ -9,10 +9,11 @@ import { IdeaTabs } from "./idea-tabs/idea-tabs";
 import { Pagination } from './pagination/pagination';
 import { Statustabs } from './statustabs/statustabs';
 import { IdeaDashboard } from './ideas/idea-dashboard/idea-dashboard';
+import { Addidea } from './addidea/addidea';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Sidenav, HeaderFilterBar, MatSidenavModule, MatButtonModule, HeaderBar, IdeaTabs, Pagination, Statustabs, IdeaDashboard],
+  imports: [RouterOutlet, Sidenav, HeaderFilterBar, MatSidenavModule, MatButtonModule, HeaderBar, IdeaTabs, Pagination, Statustabs, IdeaDashboard, Addidea],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

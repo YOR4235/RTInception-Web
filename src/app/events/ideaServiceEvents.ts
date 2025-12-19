@@ -20,7 +20,6 @@ export class IdeaEventsService {
   }
 
   sortByColumn(column: string, direction: 'asc' | 'desc') {
-    console.log("sorting event raised", column, direction);
     this.eventsSubject.next({ type: 'sort', payload: { column, direction } });
   }
 }

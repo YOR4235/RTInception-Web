@@ -10,6 +10,7 @@ import {MatIconModule} from '@angular/material/icon';
   styleUrl: './sidenav.scss',
 })
 export class Sidenav {
+  menuClosed: boolean = false;
   menuItems = [
     { label: 'Dashboard', icon: '' },
     { label: 'SEAR Groups', icon: '' },
@@ -17,9 +18,9 @@ export class Sidenav {
     { label: 'Logout', icon: '' }
   ];
 
-  onMenuClick(item: string): void {
-    console.log(`${item} clicked`);
-    // Here you can add routing logic or emit events
+  onMenuclick(): void {
+    this.menuClosed = !this.menuClosed;
+    console.log("memu closed", this.menuClosed);
   }
 
 }
