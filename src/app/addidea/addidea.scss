@@ -17,10 +17,36 @@
 
 /* Content */
 .content { flex: 1; padding: 28px 36px; }
-.content-header { display:flex; align-items:flex-start; gap: 16px; margin-bottom: 18px; }
-.content-header h1 { margin: 0; font-size: 20px; font-weight: 600; }
-.breadcrumb { color: #6b7280; margin-top: 4px; font-size: 13px; }
+.content-header { display:flex; align-items:center; gap: 8px; flex-wrap:wrap; }
+.content-header h1 { margin: 0; font-size: 24px; font-weight: 600; }
+// .breadcrumb { color: #15408c; margin-top: 4px; font-size: 13px; }
+.breadcrumb {
+  flex-basis: 100%;
+  margin-top: 4px;
+  font-size: 14px;
+  color: #555; /* default color for Home */
+}
+.breadcrumb .current {
+  color: #15408c; /* highlight Create New Idea */
+  font-weight: 500; /* optional: make it stand out */
+}
+.content-header .back {
+   border: 2px solid #15408c; /* blue border */
+   background: transparent;  
+   color: #15408c; /* arrow itself in blue */ 
+   padding: 6px 8px; 
+   border-radius: 4px; 
+  }
+.divider {
+  border: none;   
+  height:4px;         /* remove default styles */
+  border-top: 1px solid #ccc; /* thin grey line */
+  margin: 8px 0; 
+  width:100%; 
+  flex-basis: 100%;     /* spacing above/below */
+}
 
+ 
 /* Form grid */
 .form { background: transparent; }
 .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 10px; }
@@ -46,7 +72,7 @@ textarea { resize: vertical; min-height: 120px; }
 /* Actions */
 .actions { display:flex; justify-content: flex-end; gap: 12px; margin-top: 22px; }
 .btn-outline { padding: 10px 16px; border-radius: 8px; border: 1px solid #cbd5e1; background: white; cursor: pointer; }
-.btn-primary { padding: 10px 18px; border-radius: 8px; border: none; background: #1f4ed8; color: white; cursor: pointer; }
+.btn-primary { padding: 10px 18px; border-radius: 8px; border: none; background: #15408c; color: white; cursor: pointer; }
 
 /* Responsive */
 @media (max-width: 1000px) {
