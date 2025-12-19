@@ -1,0 +1,30 @@
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    border: 1px solid #e0e0e0;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .header-text {
+    margin-right: 4px;
+  }
+
+  .sort-icon {
+    font-size: 20px;
+    vertical-align: middle;
+    color: #888;
+  }
+
+  tr:hover {
+    background-color: #fafafa;
+  }
+}

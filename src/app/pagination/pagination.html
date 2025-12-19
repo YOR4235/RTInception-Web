@@ -1,11 +1,9 @@
-
 <div class="pagination" *ngIf="totalPages > 1">
-  <!-- Prev with left arrow -->
+  <!-- Prev -->
   <button (click)="prev()" [disabled]="currentPage === 1">&lt; Previous</button>
 
-  <!-- Numbers + ellipsis + last page -->
+  <!-- Page numbers + ellipsis -->
   <ng-container *ngFor="let item of paginationItems">
-    <!-- Render numbers as buttons -->
     <button
       *ngIf="item !== 'ellipsis'; else dotsTpl"
       (click)="selectPage(item)"
@@ -13,13 +11,11 @@
       {{ item }}
     </button>
 
-    <!-- Ellipsis -->
     <ng-template #dotsTpl>
       <span class="dots">…</span>
     </ng-template>
   </ng-container>
 
-  <!-- Next with right arrow -->
+  <!-- Next -->
   <button (click)="next()" [disabled]="currentPage === totalPages">Next &gt;</button>
 </div>
-``

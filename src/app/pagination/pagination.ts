@@ -1,35 +1,32 @@
 import { Component, Input } from '@angular/core';
 import { IdeaEventsService } from '../events/ideaServiceEvents';
 import { CommonModule } from '@angular/common';
-import {MatPaginatorModule} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-pagination',
-  imports: [CommonModule, MatPaginatorModule],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './pagination.html',
-  styleUrl: './pagination.scss',
+  styleUrls: ['./pagination.scss'],
 })
 export class Pagination {
-
-  @Input() totalPages: number = 11;
+  @Input() totalPages: number = 1;
   @Input() currentPage: number = 1;
-  pageSize: number = 11;
 
   constructor(private ideaEvents: IdeaEventsService) {}
-  
-get paginationItems(): (number | 'ellipsis')[] {
+
+  get paginationItems(): (number | 'ellipsis')[] {
     const items: (number | 'ellipsis')[] = [];
 
-    // If small totals, just show all pages (no ellipsis)
     if (this.totalPages <= 6) {
       for (let i = 1; i <= this.totalPages; i++) items.push(i);
       return items;
     }
 
-  // Always show pages 1..5
+    // Always show pages 1..5
     for (let i = 1; i <= 5; i++) items.push(i);
 
-    // If there are pages between 5 and last, show a single ellipsis
+    // Ellipsis if there are more pages
     if (this.totalPages > 6) {
       items.push('ellipsis');
     }
@@ -40,22 +37,23 @@ get paginationItems(): (number | 'ellipsis')[] {
     return items;
   }
 
-
   prev() {
     if (this.currentPage > 1) {
-      this.currentPage--;
-      this.ideaEvents.changePage(this.currentPage);
+      const newPage = this.currentPage - 1;
+      this.ideaEvents.changePage(newPage); // 🔗 raise event
     }
   }
 
   next() {
-    this.currentPage++;
-    this.ideaEvents.changePage(this.currentPage);
+    if (this.currentPage < this.totalPages) {
+      const newPage = this.currentPage + 1;
+      this.ideaEvents.changePage(newPage); // 🔗 raise event
+    }
   }
 
   selectPage(page: number) {
-    this.currentPage = page;
-    this.ideaEvents.changePage(this.currentPage);
+    if (page >= 1 && page <= this.totalPages) {
+      this.ideaEvents.changePage(page); // 🔗 raise event
+    }
   }
-
 }

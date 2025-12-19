@@ -36,7 +36,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0px;          //  (for perfect square)
+  border-radius: 0px;          // Slight rounding (set to 0 for perfect square)
   font-weight: 700;            // Emphasize active
 }
 
@@ -45,4 +45,3 @@
 .pagination button:last-child {
   padding: 4px 10px;           
 }
-
