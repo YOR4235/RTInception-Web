@@ -45,28 +45,3 @@
 .pagination button:last-child {
   padding: 4px 10px;           
 }
-.right .mat-form-field { width: 150px; }
-
-.tabs {   
-  max-width: 600px;      
-  margin: 0 auto;
-  padding-top: 8px;
-}
-.mat-mdc-tab-group .mat-mdc-tab-labels {
-  justify-content: flex-start;   /* left align the tabs */
-  gap: 0px;
-  padding-left: 0px;
-}
-/* Light green variant (use on 3,8,10) */
-.badge-pill,
-.badge-pill.success,         
-.badge-pill.info {           
-  background-color: #dcfce7; 
-  color: #065f46;            
-  border: 1px solid #bbf7d0;
-  min-width: 22px; 
-  border-radius: 9999px; 
-  font-size: 12px;
-   font-weight: 600;
-   line-height: 1; /* subtle border for definition */
-}
