@@ -13,8 +13,8 @@
 .filters .label {
   white-space: nowrap;
   font-size: 12px;
-  line-height: 1;
-  margin-right: 4px;
+  line-height: 16px;
+  margin-right: 1px;
   color: #555;
   flex: 0 0 auto;           /* do not grow or shrink */
 }
@@ -27,7 +27,7 @@
 /* Make Angular Material dropdowns compact */
 ::ng-deep .filters .dense .mat-mdc-form-field-wrapper {
   height: 24px;
-  padding-bottom: 0;
+  padding-bottom: 0px;
 }
 
 ::ng-deep .filters .dense .mat-mdc-text-field-wrapper {
@@ -36,7 +36,7 @@
 }
 
 ::ng-deep .filters .dense .mat-mdc-form-field-infix {
-  min-height: 20px;
+  min-height: 12px;
   padding: 2px 0;
 }
 

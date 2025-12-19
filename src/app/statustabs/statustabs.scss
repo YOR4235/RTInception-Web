@@ -53,8 +53,8 @@
   }
   
 .rotate-icon {
-  transform: rotate(90deg); /* Rotate 90° clockwise */
-   display: inline-block;    /* Ensure transform applies */
+  transform: rotate(90deg);
+   display: inline-block;    
 }
 
   /* New Idea button (filled, white text/icon) */
@@ -73,14 +73,14 @@
 .right .mat-form-field { width: 150px; }
 
 .tabs {   
-  max-width: 600px;      /* Set desired width (e.g., 600px) */
+  max-width: 600px;      
   margin: 0 auto;
   padding-top: 8px;
 }
 .mat-mdc-tab-group .mat-mdc-tab-labels {
   justify-content: flex-start;   /* left align the tabs */
   gap: 0px;
-  padding-left: 0;
+  padding-left: 0px;
 }
 /* Light green variant (use on 3,8,10) */
 .badge-pill,
