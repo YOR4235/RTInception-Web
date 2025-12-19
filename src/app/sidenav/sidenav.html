@@ -6,16 +6,22 @@
 
 <!-- Navigation -->
 <nav class="nav">
-  <a mat-ripple class="nav-item active">
+  <!-- Home -->
+  <a [routerLink]="'/'" mat-ripple class="nav-item active">
     <mat-icon>home</mat-icon>
     <span>Home</span>
   </a>
-  <a mat-ripple class="nav-item">
+
+  <!-- My Ideas -->
+  <a [routerLink]="'/myideas'" mat-ripple class="nav-item">
     <mat-icon>lightbulb</mat-icon>
     <span>My Ideas</span>
   </a>
-  <a mat-ripple class="nav-item">
+
+  <!-- Contact -->
+  <a [routerLink]="'/contact'" mat-ripple class="nav-item">
     <mat-icon>help</mat-icon>
     <span>Contact for help</span>
   </a>
 </nav>
+
