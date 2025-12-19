@@ -5,6 +5,8 @@ import { Router, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDividerModule } from '@angular/material/divider';
+import { IdeaService } from '../ideas/idea.service';
+import { IdeaEventsService } from '../events/ideaServiceEvents';
 
 @Component({
   selector: 'app-statustabs',
@@ -15,30 +17,15 @@ import { MatDividerModule } from '@angular/material/divider';
 })
 export class Statustabs {
 
-  @Input() ideas: Idea[] = [];
-  @Output() createIdea = new EventEmitter<void>();
-  @Output() exportIdeas = new EventEmitter<void>();
-  @Output() filterByStatus = new EventEmitter<string>();
+  @Input() tabs: any[] = [];
+  activeTab: string = 'All';
 
-  constructor(private router: Router) {}
+  constructor(private ideaEvents: IdeaEventsService) {}
 
-  // compute counts dynamically
-  getCount(status: string): number {
-    if (status === 'All') return this.ideas.length;
-    return this.ideas.filter(i => i.status.toLowerCase() === status.toLowerCase()).length;
-  }
-
-  onFilter(status: string): void {
-    this.filterByStatus.emit(status);
-  }
-
-  onCreate(): void {
-    this.router.navigate(['/addidea']);
-    this.createIdea.emit();
-  }
-
-  onExport(): void {
-    this.exportIdeas.emit();
+  selectTab(tab: any) {
+    this.activeTab = tab.label;
+    // publish event globally
+    this.ideaEvents.applyFilterByStatus(tab.label);
   }
 
 }

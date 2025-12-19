@@ -36,7 +36,7 @@ export interface Idea {
   funding_source: string;
   flag_unlock: boolean;
 
-  status: 'Open' | 'Pending' | 'Closed' | 'Draft' | 'Created';
+  status: 'Open' | 'Pending' | 'Closed' | 'Draft' | 'Created' | 'On Hold';
 
   created_by: string;             // uuid
   updated_by: string;             // uuid

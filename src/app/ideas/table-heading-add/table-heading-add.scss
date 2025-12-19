@@ -1,0 +1,31 @@
+.ideas-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .left {
+    .title {
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .caption {
+      font-size: 14px;
+      color: #666;
+    }
+  }
+
+  .right {
+    display: flex;
+    gap: 12px;
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .rotate-icon {
+      transform: rotate(90deg); // optional styling for export icon
+    }
+  }
+}

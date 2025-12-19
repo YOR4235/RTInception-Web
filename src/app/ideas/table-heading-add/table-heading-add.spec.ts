@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IdeaListParent } from './idea-list-parent';
+import { TableHeadingAdd } from './table-heading-add';
 
-describe('IdeaListParent', () => {
-  let component: IdeaListParent;
-  let fixture: ComponentFixture<IdeaListParent>;
+describe('TableHeadingAdd', () => {
+  let component: TableHeadingAdd;
+  let fixture: ComponentFixture<TableHeadingAdd>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [IdeaListParent]
+      imports: [TableHeadingAdd]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(IdeaListParent);
+    fixture = TestBed.createComponent(TableHeadingAdd);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
