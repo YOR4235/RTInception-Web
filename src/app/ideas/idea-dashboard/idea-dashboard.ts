@@ -10,11 +10,13 @@ import { Pagination } from '../../pagination/pagination';
 import { TableColumn } from '../idea-table/idea-table';
 import { HeaderFilterBar } from '../../header-filter-bar/header-filter-bar';
 import { Statustabs } from '../../statustabs/statustabs';
+import { TableHeadingAdd } from '../table-heading-add/table-heading-add';
+import { HeaderBar } from '../../header-bar/header-bar';
 
 @Component({
   selector: 'app-idea-dashboard',
   standalone: true,
-  imports: [IdeaTable, Pagination, HeaderFilterBar, Statustabs],
+  imports: [IdeaTable, Pagination, HeaderFilterBar,TableHeadingAdd, Statustabs, HeaderBar],
   templateUrl: './idea-dashboard.html',
   styleUrls: ['./idea-dashboard.scss'],
 })
@@ -24,17 +26,25 @@ export class IdeaDashboard implements OnInit, OnDestroy {
     { key: 'research_pathway', label: 'RP', sortable: true },
     { key: 'rti_year', label: 'Year', sortable: true },
     { key: 'therapeutic_area', label: 'Therapeutic Area', sortable: true },
-    { key: 'target_aspirational_claim', label: 'Target Aspirational Claim', sortable: true }
+    { key: 'target_aspirational_claim', label: 'Target Aspirational Claim', sortable: true },
+    { key: 'status', label: 'Status', sortable: true }
   ];
-  
 
   ideas$: Observable<Idea[]>;
-  ideas: Idea[] = [];
-  pagedIdeas: Idea[] = [];
-
+  ideas: Idea[] = [];            
+  filteredIdeas: Idea[] = [];    
+  pagedIdeas: Idea[] = [];     
   currentPage = 1;
   pageSize = 5;
   totalPages = 1;
+
+  statusTabs = [
+    { label: 'All', count: 0 },
+    { label: 'Open', count: 0 },
+    { label: 'On Hold', count: 0 },
+    { label: 'Closed', count: 0 }
+  ];
+  
 
   private sub!: Subscription;
   
@@ -47,7 +57,8 @@ export class IdeaDashboard implements OnInit, OnDestroy {
   
     this.ideas$.subscribe((ideas) => {
       this.ideas = ideas;
-      this.totalPages = Math.ceil(this.ideas.length / this.pageSize);
+      this.filteredIdeas = [...ideas]; // initialize working list
+      this.totalPages = Math.ceil(this.filteredIdeas.length / this.pageSize);
       this.updatePagedIdeas();
     });
 
@@ -57,10 +68,12 @@ export class IdeaDashboard implements OnInit, OnDestroy {
       } else if (event.type === 'page') {
         this.changePage(event.payload);
       } else if (event.type === 'sort') {
-        console.log("Sorting by event received in dashboard", event.payload);
         this.sortBy(event.payload.column as keyof Idea, event.payload.direction);
+      } else if (event.type === 'statusTab') {
+        this.filterByStatus(event.payload.status);
       }
     });
+    this.updateStatusCounts();
   }
 
   ngOnDestroy() {
@@ -69,8 +82,16 @@ export class IdeaDashboard implements OnInit, OnDestroy {
 
   updatePagedIdeas(): void {
     const startIndex = (this.currentPage - 1) * this.pageSize;
-    this.pagedIdeas = this.ideas.slice(startIndex, startIndex + this.pageSize);
+    this.pagedIdeas = this.filteredIdeas.slice(startIndex, startIndex + this.pageSize);
   }
+
+  updateStatusCounts(): void {
+    this.statusTabs[0].count = this.ideas.length; // All
+    this.statusTabs[1].count = this.ideas.filter(i => i.status === 'Open').length;
+    this.statusTabs[2].count = this.ideas.filter(i => i.status === 'On Hold').length;
+    this.statusTabs[3].count = this.ideas.filter(i => i.status === 'Closed').length;
+  }
+
 
   changePage(page: number) {
     if (page >= 1 && page <= this.totalPages) {
@@ -80,30 +101,37 @@ export class IdeaDashboard implements OnInit, OnDestroy {
   }
 
   applyFilter(criteria: string) {
-    const filtered = this.ideas.filter(idea =>
+    this.filteredIdeas = this.ideas.filter(idea =>
       Object.values(idea).some(val =>
         val?.toString().toLowerCase().includes(criteria.toLowerCase())
       )
     );
-    this.totalPages = Math.ceil(filtered.length / this.pageSize);
-    const startIndex = (this.currentPage - 1) * this.pageSize;
-    this.pagedIdeas = filtered.slice(startIndex, startIndex + this.pageSize);
+    this.totalPages = Math.ceil(this.filteredIdeas.length / this.pageSize);
+    this.currentPage = 1; // reset to first page
+    this.updatePagedIdeas();
+  }
+
+  filterByStatus(status: string) {
+    if (status === 'All') {
+      this.filteredIdeas = [...this.ideas];
+    } else {
+      this.filteredIdeas = this.ideas.filter(i => i.status === status);
+    }
+    this.totalPages = Math.ceil(this.filteredIdeas.length / this.pageSize);
+    this.currentPage = 1;
+    this.updatePagedIdeas();
   }
 
   sortBy(column: keyof Idea, direction: 'asc' | 'desc') {
+    console.log(`Sorting by ${column} in ${direction} order`);
     const dir = direction === 'asc' ? 1 : -1;
-  
-    // Clone the array before sorting to avoid mutating NgRx state
-    const sorted = [...this.ideas].sort((a, b) => {
+    this.filteredIdeas = [...this.filteredIdeas].sort((a, b) => {
       const av = a[column] as any;
       const bv = b[column] as any;
       if (av < bv) return -1 * dir;
       if (av > bv) return 1 * dir;
       return 0;
     });
-  
-    this.ideas = sorted;
     this.updatePagedIdeas();
   }
-  
 }

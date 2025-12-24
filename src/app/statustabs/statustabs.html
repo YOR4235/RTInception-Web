@@ -1,4 +1,4 @@
-
+<!-- 
 <div class="ideas-toolbar px-24 py-16">
   <div class="left">
     <div class="title">Ideas List</div>
@@ -22,7 +22,7 @@
       <ng-template mat-tab-label>
         All
       </ng-template>
-      <!-- content lives in table below -->
+  
     </mat-tab>
 
     <mat-tab>
@@ -47,6 +47,14 @@
     </mat-tab>
   </mat-tab-group>
 </div>
-<mat-divider></mat-divider>
-
-``
+<mat-divider></mat-divider> -->
+<div class="status-tabs">
+  <div 
+    *ngFor="let tab of tabs" 
+    class="tab" 
+    [class.active]="activeTab === tab.label"
+    (click)="selectTab(tab)">
+    <span class="label">{{ tab.label }}</span>
+    <span class="count">({{ tab.count }})</span>
+  </div>
+</div>

@@ -1,5 +1,7 @@
+<app-header-bar></app-header-bar>
 <app-header-filter-bar></app-header-filter-bar>
-<app-statustabs></app-statustabs>
+<app-table-heading-add></app-table-heading-add>
+<app-statustabs [tabs]="statusTabs"></app-statustabs>
 <app-idea-table [columns]="ideaDisplayColumns"
 [dataSource]="pagedIdeas"></app-idea-table>
 
