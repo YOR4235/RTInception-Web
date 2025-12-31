@@ -1,0 +1,77 @@
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+/* Static label above the field */
+.form-label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #97989b; /* <-- change to your desired color */
+  font-size: 14px;
+}
+
+.required {
+  color: #d93636; /* red asterisk */
+  margin-left: 4px;
+}
+
+.form-field-control {
+  width: 100%;
+}
+
+/* Style the input, textarea, and select inside mat-form-field */
+.form-field-control input[matInput],
+.form-field-control textarea[matInput],
+.form-field-control mat-select {
+  font-size: 14px;
+}
+
+/* Textarea: respect rows and give consistent line height */
+.form-field-control textarea[matInput] {
+  line-height: 1.4rem;
+  resize: vertical;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+/* Optional: tweak select dropdown spacing */
+.form-field-control mat-select {
+  padding: 4px 0;
+}
+
+/* Error and hint messages */
+::ng-deep .mat-form-field-subscript-wrapper {
+  margin-top: 4px;
+}
+
+/* --- Custom searchable select styles --- */
+
+/* Search option row inside dropdown */
+.panel-search-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0px;
+}
+
+.panel-search-input {
+  flex: 1;
+  font-size: 14px;
+}
+
+.panel-search-input::placeholder {
+  color: #999;
+  opacity: 1;
+}
+
+.search-icon {
+  color: #8a94a7;
+  font-size: 20px;
+}
+
+.suffix-icon {
+  color: #8a94a7;
+  font-size: 22px;
+}

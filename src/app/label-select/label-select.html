@@ -1,0 +1,49 @@
+<div class="form-field">
+  <!-- Static label above -->
+  <label class="form-label">
+    {{ label }}
+    <span *ngIf="required" class="required">*</span>
+  </label>
+
+  <!-- Textbox -->
+  <mat-form-field *ngIf="type === 'text'" appearance="outline" class="form-field-control">
+    <input matInput [(ngModel)]="value" [required]="required" />
+  </mat-form-field>
+
+  <!-- Textarea -->
+  <mat-form-field *ngIf="type === 'textarea'" appearance="outline" class="form-field-control">
+    <textarea matInput [(ngModel)]="value" [required]="required" rows="3"></textarea>
+  </mat-form-field>
+
+  <!-- Custom searchable select -->
+  <mat-form-field *ngIf="type === 'select'" appearance="fill" class="form-field-control">
+    <mat-select [formControl]="control" (selectionChange)="onSelectionChange($event.value)">
+      <!-- Search box as the first option -->
+      <mat-option>
+        <div class="panel-search-option">
+          <mat-icon class="search-icon">search</mat-icon>
+          <input
+            matInput
+            class="panel-search-input"
+            [formControl]="search"
+            [placeholder]="searchPlaceholder"
+            (click)="$event.stopPropagation()"
+          />
+        </div>
+      </mat-option>
+
+      <!-- Actual options -->
+      <mat-option *ngFor="let option of filteredOptions" [value]="option.value">
+        {{ option.viewValue }}
+      </mat-option>
+    </mat-select>
+
+    <!-- Suffix icon -->
+    <mat-icon matSuffix class="suffix-icon">expand_more</mat-icon>
+
+    <!-- Error message -->
+    <mat-error *ngIf="required && control.invalid && (submitted || control.touched)">
+      Please select a value
+    </mat-error>
+  </mat-form-field>
+</div>

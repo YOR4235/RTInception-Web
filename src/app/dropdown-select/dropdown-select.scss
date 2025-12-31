@@ -1,0 +1,27 @@
+/* Search option row inside dropdown */
+.panel-search-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0px;
+}
+
+.panel-search-input {
+  flex: 1;
+  font-size: 14px;
+}
+
+.panel-search-input::placeholder {
+  color: #999;
+  opacity: 1;
+}
+
+.search-icon {
+  color: #8a94a7;
+  font-size: 20px;
+}
+
+.suffix-icon {
+  color: #8a94a7;
+  font-size: 22px;
+}

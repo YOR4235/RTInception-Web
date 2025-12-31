@@ -1,0 +1,41 @@
+<div class="alcon-form-group">
+  
+  <mat-form-field appearance="fill">
+    <mat-select
+      [formControl]="control"
+      (selectionChange)="onSelectionChange($event.value)"
+    >
+      <!-- Search box as the first option -->
+      <mat-option>
+        <div class="panel-search-option">
+          <mat-icon class="search-icon">search</mat-icon>
+          <input
+            matInput
+            class="panel-search-input"
+            [formControl]="search"
+            [placeholder]="searchPlaceholder"
+            (click)="$event.stopPropagation()"
+          />
+        </div>
+      </mat-option>
+
+      <!-- Actual options -->
+      <mat-option
+        *ngFor="let option of filteredOptions"
+        [value]="option.value"
+      >
+        {{ option.viewValue }}
+      </mat-option>
+    </mat-select>
+
+    <!-- Suffix icon -->
+    <mat-icon matSuffix class="suffix-icon">expand_more</mat-icon>
+
+    <!-- Error message -->
+    <mat-error
+      *ngIf="required && control.invalid && (submitted || control.touched)"
+    >
+      Please select a value
+    </mat-error>
+  </mat-form-field>
+</div>

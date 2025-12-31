@@ -1,0 +1,16 @@
+.app-header {
+  display: flex;
+  justify-content: space-between; /* left and right aligned */
+  align-items: center;
+  padding: 8px 16px;
+  background-color: var(--surface); /* or your theme color */
+  border-bottom: 1px solid var(--border);
+}
+
+.header-left {
+  flex: 1; /* takes available space */
+}
+
+.header-right {
+  flex-shrink: 0; /* logo stays compact */
+}

@@ -1,58 +1,27 @@
-/* idea-form.css */
-/* Basic reset */
-:host { display: block; font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial; color: #222; }
-
-/* Layout */
-.page { display: flex; min-height: 100vh;}
-.sidebar {
-  width: 220px;
-  background: white;
-  border-right: 1px solid #e6e9ee;
-  padding: 24px 16px;
+.form {
+  background-color: #fdfbfb;
 }
-.logo { font-weight: 700; font-size: 28px; color: #2b4b8d; margin-bottom: 18px; }
-.nav { display:flex; flex-direction: column; gap: 8px; }
-.nav-item { background: none; border: none; text-align: left; padding: 10px 8px; border-radius: 8px; cursor: pointer; }
-.nav-item.active { background: #2b4b8d; color: white; }
+.dropdown-row {
+  display: flex;
+  flex-direction: row;
+  gap: 16px; /* spacing between dropdowns */
+  align-items: flex-start; /* align labels nicely */
+  justify-content: space-between; /* spread evenly */
 
-/* Content */
-.content { flex: 1; padding: 28px 36px; }
-.content-header { display:flex; align-items:flex-start; gap: 16px; margin-bottom: 18px; }
-.content-header h1 { margin: 0; font-size: 20px; font-weight: 600; }
-.breadcrumb { color: #6b7280; margin-top: 4px; font-size: 13px; }
-
-/* Form grid */
-.form { background: transparent; }
-.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 10px; }
-.col { background: white; padding: 16px; border-radius: 8px; box-shadow: 0 1px 0 rgba(10,10,10,0.02); display: flex; flex-direction: column; gap: 12px; min-height: 260px; }
-
-label { font-size: 13px; color: #374151; font-weight: 600; display:block; }
-.req { color: #d14343; margin-left: 4px; font-weight:700; }
-
-select, input[type="text"], input[type="number"], textarea {
-  width: 100%;
-  padding: 10px 2px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  font-size: 14px;
-  background: #fff;
+  app-dropdown-select {
+    flex: 1; /* each dropdown takes equal width */
+    min-width: 200px; /* prevent shrinking too small */
+  }
 }
 
-/* Make the readonly fields appear like chips */
-input[readonly] { background: #f3f4f6; color: #111827; }
-
-textarea { resize: vertical; min-height: 120px; }
-
-/* Actions */
-.actions { display:flex; justify-content: flex-end; gap: 12px; margin-top: 22px; }
-.btn-outline { padding: 10px 16px; border-radius: 8px; border: 1px solid #cbd5e1; background: white; cursor: pointer; }
-.btn-primary { padding: 10px 18px; border-radius: 8px; border: none; background: #1f4ed8; color: white; cursor: pointer; }
-
-/* Responsive */
-@media (max-width: 1000px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
-  .sidebar { display: none; }
+/* Optional: make button appear below row with spacing */
+form button {
+  margin-top: 20px;
 }
-@media (max-width: 640px) {
-  .grid { grid-template-columns: 1fr; }
+
+.button-row {
+  display: flex;
+  gap: 16px;        // space between buttons
+  align-items: center; // vertical alignment
 }
+
