@@ -7,17 +7,17 @@
 
   <!-- Textbox -->
   <mat-form-field *ngIf="type === 'text'" appearance="outline" class="form-field-control">
-    <input matInput [(ngModel)]="value" [required]="required" />
+    <input matInput [(ngModel)]="value" [required]="required" [disabled]="isDisabled" />
   </mat-form-field>
 
   <!-- Textarea -->
   <mat-form-field *ngIf="type === 'textarea'" appearance="outline" class="form-field-control">
-    <textarea matInput [(ngModel)]="value" [required]="required" rows="3"></textarea>
+    <textarea matInput [(ngModel)]="value" [required]="required" rows="3" [disabled]="isDisabled"></textarea>
   </mat-form-field>
 
   <!-- Custom searchable select -->
   <mat-form-field *ngIf="type === 'select'" appearance="fill" class="form-field-control">
-    <mat-select [formControl]="control" (selectionChange)="onSelectionChange($event.value)">
+    <mat-select [formControl]="control" (selectionChange)="onSelectionChange($event.value)" [disabled]="isDisabled">
       <!-- Search box as the first option -->
       <mat-option>
         <div class="panel-search-option">

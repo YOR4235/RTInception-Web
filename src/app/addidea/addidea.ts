@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DropdownOption } from '../dropdown-select/dropdown-select';
 import { ButtonSelect } from '../button-select/button-select';
 import { LabelSelect } from '../label-select/label-select';
+import {MatCardModule} from '@angular/material/card';
 
 
 @Component({
@@ -11,7 +12,9 @@ import { LabelSelect } from '../label-select/label-select';
   imports: [
     ButtonSelect,
     LabelSelect,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    MatCardModule,
   ],
   templateUrl: './addidea.html',
   styleUrl: './addidea.scss',
@@ -27,6 +30,7 @@ export class Addidea {
   productOptions: DropdownOption<string>[] = [
     { value: 'DAILIES TOTAL1 Sphere', viewValue: 'DAILIES TOTAL1 Sphere' },
     { value: 'DAILIES AquaComfort Plus Toric', viewValue: 'DAILIES AquaComfort Plus Toric' },
+    { value: 'DAILIES Colors', viewValue: 'DAILIES Colors' },
     { value: 'DAILIES Colors', viewValue: 'DAILIES Colors' },
   ];
 

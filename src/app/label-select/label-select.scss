@@ -32,8 +32,8 @@
 .form-field-control textarea[matInput] {
   line-height: 1.4rem;
   resize: vertical;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 /* Optional: tweak select dropdown spacing */
@@ -74,4 +74,14 @@
 .suffix-icon {
   color: #8a94a7;
   font-size: 22px;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex {
+  height: 50px; /* set desired height */
+  align-items: center; /* vertically center the input */
+}
+
+::ng-deep input.mat-input-element {
+  height: 100%; /* make input fill the container */
+  padding: 0 8px; /* adjust padding if needed */
 }

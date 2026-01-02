@@ -35,6 +35,7 @@ export class LabelSelect<T = any> implements OnInit {
   @Input() required: boolean = false;
   @Input() value: any;
   @Input() searchPlaceholder = 'Search';
+  @Input() isDisabled = false;
 
   /** Control for custom select */
   @Input() control: FormControl<T | null> = new FormControl<T | null>(null);

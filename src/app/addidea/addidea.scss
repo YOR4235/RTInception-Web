@@ -1,27 +1,26 @@
-.form {
-  background-color: #fdfbfb;
-}
-.dropdown-row {
-  display: flex;
-  flex-direction: row;
-  gap: 16px; /* spacing between dropdowns */
-  align-items: flex-start; /* align labels nicely */
-  justify-content: space-between; /* spread evenly */
+.form-card {
+  max-width: 1000px;       // control card width
+  margin: 20px auto;       // center card horizontally
+  padding: 20px;           // inner spacing
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 
-  app-dropdown-select {
-    flex: 1; /* each dropdown takes equal width */
-    min-width: 200px; /* prevent shrinking too small */
+  .material-form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); // 3 equal columns
+    gap: 0px 30px; // spacing between fields
+    width: 100%;
+    grid-auto-rows: 70px;
+
+    .form-field {
+      width: 100%;
+    }
+
+    .form-actions {
+      grid-column: span 3; // buttons row spans all 3 columns
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 20px;
+    }
   }
 }
-
-/* Optional: make button appear below row with spacing */
-form button {
-  margin-top: 20px;
-}
-
-.button-row {
-  display: flex;
-  gap: 16px;        // space between buttons
-  align-items: center; // vertical alignment
-}
-

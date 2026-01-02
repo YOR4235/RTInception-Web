@@ -15,5 +15,5 @@ export class ButtonSelect {
   @Input() size: 'small' | 'medium' | 'large' = 'medium';
   @Input() icon?: string;
   @Input() iconPosition: 'left' | 'right' = 'left';
-  @Input() disabled: boolean = false;
+  @Input() isDisabled: boolean = false;
 }

@@ -1,32 +1,145 @@
-<form [formGroup]="form" class="form">
-  <div class="dropdown-row">
-    <!-- Textbox -->
-    <app-label-select
-      label="Username"
-      type="text"
-      [(value)]="user.name"
-      [required]="true"
-    ></app-label-select>
+<mat-card class="form-card">
+  <!-- <mat-card-header>
+    <mat-card-title>Create New Idea</mat-card-title>
+    <mat-card-subtitle>Home>create</mat-card-subtitle>
+  </mat-card-header> -->
 
-    <!-- Textarea -->
-    <app-label-select label="Description" type="textarea" [(value)]="user.role"></app-label-select>
+  <mat-card-content>
+    <form class="material-form" #myForm="ngForm">
+      
+      <!-- Example repeated fields -->
+      <div class="form-field">
+        <app-label-select
+          label="Username"
+          type="text"
+          [(value)]="user.name"
+          [required]="true"
+        ></app-label-select>
+      </div>
 
-    <app-label-select label="Produt" type="select" [options]="productOptions" [control]="form.controls.productOrProject" searchPlaceholder="Search products " [required]="true"></app-label-select>
-    
+      <div class="form-field">
+        <app-label-select
+          label="Product"
+          type="select"
+          [options]="productOptions"
+          searchPlaceholder="Search products"
+          [required]="true"
+        ></app-label-select>
+      </div>
 
-  </div>
+      <div class="form-field">
+        <app-label-select
+          label="Username"
+          type="text"
+          [(value)]="user.name"
+          [required]="true"
+        ></app-label-select>
+      </div>
 
-  <div class="button-row">
-    <app-button-select variant="type1" color="var(--primary-400)" size="medium" icon="check">
-      Submit
-    </app-button-select>
+      <div class="form-field">
+        <app-label-select
+          label="Product"
+          type="select"
+          [options]="productOptions"
+          searchPlaceholder="Search products"
+          [required]="true"
+        ></app-label-select>
+      </div>
 
-    <app-label-select label="Produt list" type="select" [options]="productOptions" [control]="form.controls.productOrProject" searchPlaceholder="Search products " [required]="true"></app-label-select>
-  
-    <app-button-select variant="type2" color="green" size="medium" icon="arrow_forward" iconPosition="right">
-      Next
-    </app-button-select>
-	</div>
+      <div class="form-field">
+        <app-label-select
+          label="Username"
+          type="text"
+          [(value)]="user.name"
+          [required]="true"
+        ></app-label-select>
+      </div>
 
-</form>
+      <div class="form-field">
+        <app-label-select
+          label="Username"
+          type="text"
+          [(value)]="user.name"
+          [required]="true"
+        ></app-label-select>
+      </div>
 
+      <div class="form-field">
+        <app-label-select
+          label="Username"
+          type="text"
+          [(value)]="user.name"
+          [required]="true"
+        ></app-label-select>
+      </div>
+
+      <div class="form-field">
+        <app-label-select
+          label="Product"
+          type="select"
+          [options]="productOptions"
+          searchPlaceholder="Search products"
+          [required]="true"
+        ></app-label-select>
+      </div>
+
+      <div class="form-field">
+        <app-label-select
+          label="Product"
+          type="select"
+          [options]="productOptions"
+          searchPlaceholder="Search products"
+          [required]="true"
+        ></app-label-select>
+      </div>
+
+      <div class="form-field">
+        <app-label-select
+          label="Description"
+          type="textarea"
+          [(value)]="user.avatarUrl"
+        ></app-label-select>
+      </div>
+
+      <div class="form-field">
+        <app-label-select
+          label="Description"
+          type="textarea"
+          [(value)]="user.role"
+        ></app-label-select>
+      </div>
+
+      <div class="form-field">
+        <app-label-select
+          label="Product"
+          type="select"
+          [options]="productOptions"
+          searchPlaceholder="Search products"
+          [required]="true"
+        ></app-label-select>
+      </div>
+
+      <!-- Buttons row -->
+      <div class="form-actions">
+        <app-button-select
+          variant="type1"
+          color="var(--primary-400)"
+          size="medium"
+          icon="check"
+        >
+          Submit
+        </app-button-select>
+
+        <app-button-select
+          variant="type2"
+          color="green"
+          size="medium"
+          icon="arrow_forward"
+          iconPosition="right"
+        >
+          Next
+        </app-button-select>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
